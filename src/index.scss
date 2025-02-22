@@ -109,6 +109,32 @@ button:focus-visible {
     color: #ff0000;
 }
 
+.cookie-msg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    p {
+        width: 90%;
+    }
+    button {
+        background-color: #646cff;
+    }
+}
+
+.green-border {
+    border: 1px solid #00ff00;
+}
+
+.red-border {
+    border: 3px solid #ff0000;
+}
+
 @media screen and (max-width: 600px) {
     .question-box {
         width: 90vw !important;

@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks';
 import './app.scss';
 import { getAvgRating, getRandomizedQuestions } from './Question';
-import QuestionComp from './QuestionComp';
+import QuestionComp from './comp/QuestionComp';
+import CookieMsg from './comp/CookieMsg';
 
 export function App() {
     const [showRating, setShowRating] = useState(false);
+    const [cookieAllowed, setCookieAllowed] = useState(false);
     const [questions] = useState(getRandomizedQuestions());
     return (
         <>
@@ -36,6 +38,7 @@ export function App() {
                     question={question}
                     showRating={showRating}
                     n={i + 1}
+                    cookieAllowed={cookieAllowed}
                 />
             ))}
             <button
@@ -48,10 +51,18 @@ export function App() {
             <button
                 className="btn"
                 onClick={() => {
-                    window.scrollTo(0, 0);
+                    window.open(
+                        'https://github.com/cophilot/promi-stq',
+                        '_blank'
+                    );
                 }}>
                 View on GitHub
             </button>
+            <CookieMsg
+                onAccept={() => {
+                    setCookieAllowed(true);
+                }}
+            />
         </>
     );
 }

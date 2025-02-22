@@ -1,21 +1,26 @@
 import { useState } from 'preact/hooks';
-import { Question } from './Question';
+import { Question } from '../Question';
 
 interface QuestionCompProps {
     n: number;
     question: Question;
+    cookieAllowed: boolean;
     showRating?: boolean;
 }
 
 export default function QuestionComp({
     n,
     question,
+    cookieAllowed,
     showRating,
 }: QuestionCompProps) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [voted, setVoted] = useState('');
     return (
-        <div class="question-box">
+        <div
+            className={
+                'question-box ' + getBorderStyle(question.rating, showRating)
+            }>
             {showRating && (
                 <div className={getRatingClass(question.rating)}>
                     {question.rating}
@@ -34,7 +39,8 @@ export default function QuestionComp({
                                     (voted === 'down' ? 'blue' : '')
                                 }
                                 onClick={() => {
-                                    if (voted === '') question.rateDown();
+                                    if (voted === '')
+                                        question.rateDown(cookieAllowed);
                                     setVoted('down');
                                 }}></i>
                         )}
@@ -45,14 +51,17 @@ export default function QuestionComp({
                                     (voted === 'up' ? 'blue' : '')
                                 }
                                 onClick={() => {
-                                    if (voted === '') question.rateUp();
+                                    if (voted === '')
+                                        question.rateUp(cookieAllowed);
                                     setVoted('up');
                                 }}></i>
                         )}
                     </div>
-                    <div className="modul-nr">
-                        <i>{'#' + question.modulNr}</i>
-                    </div>
+                    {question.modulNr && (
+                        <div className="modul-nr">
+                            <i>{'#' + question.modulNr}</i>
+                        </div>
+                    )}
                 </>
             ) : (
                 <button
@@ -69,4 +78,10 @@ const getRatingClass = (rating: number) => {
     if (rating > 0) return 'rating green';
     if (rating < 0) return 'rating red';
     return 'rating';
+};
+
+const getBorderStyle = (rating: number, showRating: boolean | undefined) => {
+    if (!showRating || rating === 0) return '';
+    if (rating > 0) return 'green-border';
+    return 'red-border';
 };
