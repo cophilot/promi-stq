@@ -1,0 +1,116 @@
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    color: white;
+}
+button:hover {
+    border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+.question-box {
+    margin: 25px;
+    padding: 25px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 50vw;
+    .rating {
+        opacity: 0.7;
+        font-size: 0.8em;
+    }
+    .answer-btn {
+        margin-top: 15px;
+        width: 100%;
+        background-color: #646cff;
+        color: white;
+    }
+    .answer {
+        margin-top: 15px;
+        padding: 15px;
+        background-color: #2a2a2a;
+        border-radius: 8px;
+        color: #646cff;
+    }
+    .rating-box {
+        width: 100%;
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+            margin: 0 10px;
+            font-size: 45px;
+            cursor: pointer;
+            &:hover {
+                color: #646cff;
+            }
+        }
+    }
+}
+
+.btn {
+    margin: 10px;
+}
+
+.blue {
+    color: #646cff;
+}
+
+.modul-nr {
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.green {
+    color: #00ff00;
+}
+
+.red {
+    color: #ff0000;
+}
+
+@media screen and (max-width: 600px) {
+    .question-box {
+        width: 90vw !important;
+    }
+}
